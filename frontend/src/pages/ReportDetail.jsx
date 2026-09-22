@@ -60,7 +60,7 @@ export default function ReportDetail() {
       setVerifying(true);
 
       const response = await fetch(
-        `http://127.0.0.1:8000/investigation/verify/${caseId}`
+      `/investigation/verify/${caseId}`
       );
 
       const data = await response.json();

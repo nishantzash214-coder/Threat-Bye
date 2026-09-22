@@ -35,9 +35,7 @@ export default function EmailDetail() {
       setLoading(true);
       setError('');
 
-      const response = await fetch(
-        `http://127.0.0.1:8000/gmail/messages/${messageId}`
-      );
+      const response = await fetch(`/gmail/messages/${messageId}`);
 
       if (!response.ok) {
         throw new Error('Unable to load this email.');
@@ -60,9 +58,7 @@ export default function EmailDetail() {
     setAnalysisError('');
     setAnalysis(null);
 
-    const response = await fetch(
-      `http://127.0.0.1:8000/gmail/analyze/${messageId}`
-    );
+    const response = await fetch(`/gmail/analyze/${messageId}`);
 
     const data = await response.json();
 

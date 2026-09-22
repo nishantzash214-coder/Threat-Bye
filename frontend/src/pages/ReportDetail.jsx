@@ -31,7 +31,7 @@ export default function ReportDetail() {
       setError('');
 
       const response = await fetch(
-        `http://127.0.0.1:8000/investigation/report/${caseId}`
+      `/investigation/report/${caseId}`
       );
 
       const data = await response.json();

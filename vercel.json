@@ -17,6 +17,18 @@
       }
     },
     {
+      "source": "/gmail/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/investigation/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
       "source": "/(.*)",
       "destination": {
         "service": "frontend"

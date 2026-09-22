@@ -1,0 +1,171 @@
+# ==========================================
+# ThreatBye - Git Ignore
+# ==========================================
+
+# ------------------------------------------
+# Frontend - React / Vite
+# ------------------------------------------
+
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Vite environment files
+frontend/.env
+frontend/.env.local
+frontend/.env.development
+frontend/.env.development.local
+frontend/.env.production
+frontend/.env.production.local
+
+
+# ------------------------------------------
+# Backend - Python
+# ------------------------------------------
+
+backend/venv/
+backend/env/
+backend/.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python build files
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+
+# ------------------------------------------
+# Environment Variables / Secrets
+# ------------------------------------------
+
+.env
+.env.*
+!.env.example
+
+frontend/.env
+backend/.env
+
+# OAuth / API credentials
+credentials.json
+token.json
+client_secret*.json
+
+# Private keys
+*.pem
+*.key
+*.crt
+
+
+# ------------------------------------------
+# Database
+# ------------------------------------------
+
+*.db
+*.sqlite
+*.sqlite3
+
+# Local database files
+database.db
+threatbye.db
+
+
+# ------------------------------------------
+# Logs
+# ------------------------------------------
+
+*.log
+logs/
+
+
+# ------------------------------------------
+# IDE / Editor
+# ------------------------------------------
+
+.vscode/
+.idea/
+
+# VS Code local settings
+*.code-workspace
+
+
+# ------------------------------------------
+# Operating System
+# ------------------------------------------
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+
+# ------------------------------------------
+# Temporary Files
+# ------------------------------------------
+
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+
+# ------------------------------------------
+# Node / npm
+# ------------------------------------------
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# ------------------------------------------
+# Python virtual environments
+# ------------------------------------------
+
+venv/
+ENV/
+env/
+
+
+# ------------------------------------------
+# AI / ML temporary files
+# ------------------------------------------
+
+*.pkl
+*.pickle
+*.joblib
+
+# Uncomment only if you don't want model files
+# models/
+
+
+# ------------------------------------------
+# Uploaded / Generated Evidence
+# ------------------------------------------
+
+backend/uploads/
+backend/temp/
+backend/output/
+
+# Uncomment if forensic evidence should NOT
+# be uploaded to GitHub
+# evidence/
+# reports/
+
+
+# ------------------------------------------
+# OS / Explorer
+# ------------------------------------------
+
+$RECYCLE.BIN/

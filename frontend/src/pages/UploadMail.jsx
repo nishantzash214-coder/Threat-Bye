@@ -41,54 +41,66 @@ export default function UploadMail() {
   };
 
   const uploadAndAnalyze = async (file) => {
-    setStatus('scanning');
-    setProgress(5);
-    setError('');
+  setStatus('scanning');
+  setProgress(5);
+  setError('');
 
-    let progressTimer;
+  let progressTimer;
 
-    try {
-      // Visual progress only while the real backend request is running.
-      progressTimer = setInterval(() => {
-        setProgress((current) => {
-          if (current >= 90) {
-            return current;
-          }
+  try {
+    // Visual progress only while the real backend request is running.
+    progressTimer = setInterval(() => {
+      setProgress((current) => {
+        if (current >= 90) {
+          return current;
+        }
 
-          return Math.min(
-            current + Math.floor(Math.random() * 8) + 2,
-            90
-          );
-        });
-      }, 500);
+        return Math.min(
+          current + Math.floor(Math.random() * 8) + 2,
+          90
+        );
+      });
+    }, 500);
 
-      const formData = new FormData();
-      formData.append('file', file);
+    const formData = new FormData();
+    formData.append('file', file);
 
-      const response = await fetch(
+    const response = await fetch(
       '/api/upload-email',
       {
         method: 'POST',
         body: formData
       }
+    );
+
+    const contentType = response.headers.get('content-type') || '';
+
+    let data;
+
+    if (contentType.includes('application/json')) {
+      data = await response.json();
+    } else {
+      const text = await response.text();
+
+      throw new Error(
+        text || `Upload failed with status ${response.status}`
       );
+    }
 
-      const data = await response.json();
+    if (!response.ok) {
+      throw new Error(
+        data.detail ||
+        data.message ||
+        'Unable to analyze the uploaded email.'
+      );
+    }
 
-      if (!response.ok) {
-        throw new Error(
-          data.detail ||
-          data.message ||
-          'Unable to analyze the uploaded email.'
-        );
-      }
+    console.log('Upload analysis result:', data);
 
-      console.log('Upload analysis result:', data);
+    clearInterval(progressTimer);
+    setProgress(100);
 
-      clearInterval(progressTimer);
-      setProgress(100);
-
-      setResult(data);
+    setResult(data);
 
       // Save this investigation to the same history
       // used by History, Alerts, Risk Dashboard and Evi Locker.
